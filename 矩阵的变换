@@ -1,0 +1,83 @@
+
+#define N 5
+
+void InitArray(int a[N][N])
+{
+	int i, j;
+
+	for (i = 0; i < N; ++i)
+	{
+		for (j = 0; j < N; ++j)
+		{
+			a[i][j] = i*N+j+1;
+		}
+	}
+}
+
+void ShowArray(int a[N][N])
+{
+	int i, j;
+
+	for (i = 0; i < N; ++i)
+	{
+		for (j = 0; j < N; ++j)
+		{
+			printf("%-3d", a[i][j]);
+		}
+		puts("");
+	}
+}
+
+void Swap(int* a, int* b)
+{
+	int t;
+	t = *a;
+	*a = *b;
+	*b = t;
+}
+
+
+void ReverseRow(int a[N][N])
+{
+	int i, j;
+
+	for (i = 0; i < N; ++i)
+	{
+		for (j = 0; j < N / 2; ++j)
+		{
+			Swap(&a[i][j], &a[i][N - 1 - j]);
+		}
+	}
+}
+
+void ReverseCol(int a[N][N])
+{
+	int i, j;
+
+	for (i = 0; i < N; ++i)
+	{
+		for (j = 0; j < N / 2; ++j)
+		{
+			Swap(&a[j][i], &a[N - 1 - j][i]);
+		}
+	}
+}
+
+void Transposition(int a[N][N])
+{
+	int i, j;
+
+	for (i = 0; i < N; ++i)
+	{
+		for (j = 0; j < i; ++j)
+		{
+			Swap(&a[j][i], &a[i][j]);
+		}
+	}
+}
+
+void ColokWise90(int a[N][N])
+{
+	Transposition(a);
+	ReverseRow(a);
+}
